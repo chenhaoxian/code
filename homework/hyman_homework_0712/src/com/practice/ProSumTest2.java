@@ -24,12 +24,19 @@ class Producer2 implements Runnable {
 
 	@Override
 	public void run() {
+		
 		System.out.println("Producer start.....");
 		for (int i = 0; i < 100; i++) {
 			synchronized (q) {
 				q.add(i);
 				System.out.println("Producer " + i + "......now the queue size is : " + q.size());
 				q.notify();
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				if (q.size() >= ProSumTest2.QUEUE_SIZE) {
 					try {
 						System.out.println("Producer end" + "......now the queue size is : " + q.size());
@@ -59,7 +66,7 @@ class Comsumer2 implements Runnable {
 			synchronized (q) {
 				if (q.isEmpty()) {
 					// q.notify();
-					if (i < 99) {
+					if (i < 199) {
 						try {
 							q.wait();
 							System.out.println("Comsumer end=========================");
