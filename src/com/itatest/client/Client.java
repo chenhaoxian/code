@@ -19,7 +19,7 @@ public class Client {
 		while(true){
 			String line = reader.readLine();
 			System.out.println(line);
-			if(line.endsWith("================")){
+			if(line.startsWith("Your")){
 				line = reader.readLine();
 				System.out.println(line);
 			}
@@ -29,7 +29,10 @@ public class Client {
 				out.write(("bye\n").getBytes());
 				break;
 			}
+			
 			out.write((command+"\n").getBytes());
+			
+			System.out.println("===================================\n\n\n");
 		}
 		
 		

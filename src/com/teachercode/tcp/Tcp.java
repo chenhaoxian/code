@@ -10,26 +10,26 @@ import java.net.Socket;
 public class Tcp {
 
 	public static void main(String[] args) throws Exception {
-		ServerSocket server = new ServerSocket(4444);//server new port
+		ServerSocket server = new ServerSocket(4444);// server new port
 
-		while(true){
+		while (true) {
 			Socket sk = server.accept();
 			new Thread(new Chater(sk)).start();
 		}
-//		server.close();
+		// server.close();
 	}
 }
 
 class Chater implements Runnable {
 	private Socket sk;
-	
+
 	public Chater(Socket sk) {
 		super();
 		this.sk = sk;
 	}
 
-	public void chat() throws Exception{
-//		Socket sk = socket.accept();
+	public void chat() throws Exception {
+		// Socket sk = socket.accept();
 		OutputStream out = sk.getOutputStream();
 
 		InputStream in = sk.getInputStream();
@@ -52,7 +52,7 @@ class Chater implements Runnable {
 		out.close();
 		sk.close();
 	}
-	
+
 	@Override
 	public void run() {
 		try {

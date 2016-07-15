@@ -16,6 +16,7 @@ public class Hyman1DaoImpl implements Hyman1Dao {
 	private Connection con = null;
 	private PreparedStatement pst = null;
 	private int resultNum = 0;
+	
 
 	@Override
 	public int addHyman1(Hyman1 hyman) {
@@ -110,10 +111,9 @@ public class Hyman1DaoImpl implements Hyman1Dao {
 
 		try {
 			pst = con.prepareStatement(sql);
-//			pst.setString(1, hyman.getMyname());
-//			con.setAutoCommit(false);
+
 			rs = pst.executeQuery();
-//			con.commit();
+
 			while(rs.next()){
 				hymanList.add(new Hyman1(rs.getString("myname"), rs.getInt("age")));
 			}
